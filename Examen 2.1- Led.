@@ -25,83 +25,83 @@ START
  #define LED PORTB, 0
  #define PUSH PORTB, 1
  
- INICIO
+INICIO
  
-  BSF LED
-  BTFSS PUSH
-  call TIEMPO2;Medio Segundo
-  BTFSC PUSH
-  call TIEMPO2;Un Segundo
-  BCF LED
-  BTFSS PUSH
-  call TIEMPO
-  BTFSC PUSH
-  call TIEMPO2
-  GOTO INICIO
-  TIEMPO:
+ BSF LED
+ BTFSS PUSH
+ call TIEMPO;Medio Segundo;     Primer Stop Para ver el tiempo de un segundo, poner en lugar de TIEMPO - TIEMPO2
+ BTFSC PUSH               ;     Segundo Stop 
+ call TIEMPO2;Un Segundo
+ BCF LED
+ BTFSS PUSH
+ call TIEMPO
+ BTFSC PUSH
+ call TIEMPO2
+ GOTO INICIO
+TIEMPO:
     
-    MOVLW d'4';4
-    MOVWF i
+ MOVLW d'4';4
+ MOVWF i
     
-    iloop: 
-    MOVLW d'239';239
-    MOVWF j
+iloop: 
+ MOVLW d'239';239
+ MOVWF j
     
-    jloop:
-    MOVLW d'173';173
-    MOVWF k
+jloop:
+ MOVLW d'173';173
+ MOVWF k
     
-    kloop:
-    DECFSZ k,f
-    GOTO kloop
-    DECFSZ j,f
-    GOTO jloop
-    DECFSZ i,f
-    GOTO iloop
-    return
+kloop:
+ DECFSZ k,f
+ GOTO kloop
+ DECFSZ j,f
+ GOTO jloop
+ DECFSZ i,f
+ GOTO iloop
+ return
     
-  TIEMPO2:
-    NOP
-    NOP
-    NOP
-    NOP
-    NOP
-    NOP
-    NOP
-    NOP
-    NOP
-    NOP
-    NOP
-    NOP
-    NOP
-    NOP
-    NOP
-    NOP
-    NOP
-    NOP
-    NOP
-    NOP
-    MOVLW d'201';10  6
-    MOVWF m
+TIEMPO2:
+ NOP
+ NOP
+ NOP
+ NOP
+ NOP
+ NOP
+ NOP
+ NOP
+ NOP
+ NOP
+ NOP
+ NOP
+ NOP
+ NOP
+ NOP
+ NOP
+ NOP
+ NOP
+ NOP
+ NOP
+ MOVLW d'201';10  6
+ MOVWF m
     
-    mloop: 
-    MOVLW d'108';239  236
-    MOVWF n
+mloop: 
+ MOVLW d'108';239  236
+ MOVWF n
     
-    nloop:
-    MOVLW d'14';138  234
-    MOVWF l
+nloop:
+ MOVLW d'14';138  234
+ MOVWF l
     
-    lloop:
-    DECFSZ l,f
-    GOTO lloop
-    DECFSZ n,f
-    GOTO nloop  
-    NOP
-    NOP
-    NOP
-    DECFSZ m,f
-    GOTO mloop
-    return
+lloop:
+ DECFSZ l,f
+ GOTO lloop
+ DECFSZ n,f
+ GOTO nloop  
+ NOP
+ NOP
+ NOP
+ DECFSZ m,f
+ GOTO mloop
+ return
   
  END
